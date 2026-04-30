@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>КІСТ — 20 років | Ювілей кафедри</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;700;900&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #c9a84c;
+    --gold-light: #f0d080;
+    --gold-dark: #8a6820;
+    --navy: #060d1f;
+    --navy-mid: #0d1e3d;
+    --navy-light: #152848;
+    --cream: #f5eed8;
+    --white: #ffffff;
+    --gray: #a0aabb;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Manrope', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.035;
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* ── SCROLL PROGRESS ── */
+  #progress-bar {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light));
+    z-index: 10000;
+    transition: width 0.1s linear;
+  }
+
+  /* ══ HERO ══════════════════════════════════════════════════════════ */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 6rem 2rem 4rem;
+  }
+
+  /* rotating ring */
+  .hero-ring {
+    position: absolute;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.15);
+    animation: spin 60s linear infinite;
+    pointer-events: none;
+  }
+  .hero-ring::before {
+    content: '';
+    position: absolute;
+    top: -4px; left: 50%;
+    width: 8px; height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 20px var(--gold), 0 0 40px var(--gold);
+  }
+  .hero-ring-2 {
+    width: 950px; height: 950px;
+    border-color: rgba(201,168,76,0.07);
+    animation-duration: 90s;
+    animation-direction: reverse;
+  }
+  .hero-ring-3 {
+    width: 1200px; height: 1200px;
+    border-color: rgba(201,168,76,0.04);
+    animation-duration: 120s;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* glowing center orb */
+  .hero-orb {
+    position: absolute;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.18) 0%, rgba(201,168,76,0.04) 50%, transparent 70%);
+    animation: pulse 4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.7; }
+  }
+
+  .hero-badge {
+    position: relative;
+    display: inline-block;
+    font-family: 'Unbounded', sans-serif;
+    font-size: clamp(0.6rem, 1vw, 0.8rem);
+    font-weight: 400;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.4);
+    padding: 0.5em 1.6em;
+    border-radius: 2em;
+    margin-bottom: 2.5rem;
+    animation: fadeDown 1s ease both;
+  }
+  .hero-badge::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: rgba(201,168,76,0.06);
+  }
+
+  .hero-num {
+    position: relative;
+    font-family: 'Unbounded', sans-serif;
+    font-size: clamp(8rem, 22vw, 18rem);
+    font-weight: 900;
+    line-height: 0.85;
+    letter-spacing: -0.03em;
+    background: linear-gradient(160deg, var(--gold-light) 0%, var(--gold) 40%, var(--gold-dark) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeUp 1.2s ease 0.2s both;
+    filter: drop-shadow(0 0 60px rgba(201,168,76,0.3));
+  }
+
+  .hero-years {
+    font-family: 'Unbounded', sans-serif;
+    font-size: clamp(1rem, 2.5vw, 1.6rem);
+    font-weight: 300;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--cream);
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 1.2s ease 0.35s both;
+  }
+
+  .hero-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    font-weight: 400;
+    color: var(--gray);
+    text-align: center;
+    max-width: 560px;
+    line-height: 1.7;
+    animation: fadeUp 1.2s ease 0.5s both;
+  }
+  .hero-title strong {
+    color: var(--cream);
+    font-weight: 600;
+  }
+
+  .hero-date {
+    margin-top: 3rem;
+    font-family: 'Unbounded', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    color: rgba(201,168,76,0.6);
+    animation: fadeUp 1.2s ease 0.65s both;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    animation: fadeUp 1.5s ease 1s both;
+  }
+  .hero-scroll span {
+    font-size: 0.6rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+  .hero-scroll-line {
+    width: 1px; height: 50px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+  @keyframes scrollLine {
+    0% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    51% { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s, padding 0.3s;
+  }
+  nav.scrolled {
+    background: rgba(6,13,31,0.95);
+    backdrop-filter: blur(16px);
+    padding: 1rem 3rem;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+  .nav-logo {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+  .nav-logo span { color: var(--white); }
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--gray);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ══ SECTIONS ═══════════════════════════════════════════════════════ */
+  section { padding: 8rem 2rem; }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .section-tag::before {
+    content: '';
+    display: inline-block;
+    width: 30px; height: 1px;
+    background: var(--gold);
+  }
+
+  .section-heading {
+    font-family: 'Unbounded', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  /* ══ ABOUT ═══════════════════════════════════════════════════════════ */
+  #about {
+    background: var(--navy);
+    border-top: 1px solid rgba(201,168,76,0.12);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .about-text p {
+    color: var(--gray);
+    line-height: 1.9;
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+  }
+  .about-text p:last-child { margin-bottom: 0; }
+  .about-text strong { color: var(--cream); font-weight: 600; }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .stat-card {
+    background: var(--navy-light);
+    padding: 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+  .stat-card:hover { background: rgba(201,168,76,0.08); }
+  .stat-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s;
+  }
+  .stat-card:hover::after { transform: scaleX(1); }
+
+  .stat-num {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--gray);
+    letter-spacing: 0.05em;
+    line-height: 1.4;
+  }
+
+  /* ══ TIMELINE ════════════════════════════════════════════════════════ */
+  #timeline {
+    background: var(--navy-mid);
+    position: relative;
+  }
+  #timeline::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 50% at 50% 50%, rgba(201,168,76,0.04), transparent);
+    pointer-events: none;
+  }
+
+  .timeline-track {
+    position: relative;
+    margin-top: 5rem;
+    padding-left: 3rem;
+  }
+  .timeline-track::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 4rem;
+    padding-left: 3rem;
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .timeline-item.visible {
+    opacity: 1;
+    transform: none;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -4px; top: 0.4rem;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 0 4px rgba(201,168,76,0.15);
+  }
+
+  .tl-year {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+  .tl-text {
+    font-size: 1rem;
+    color: var(--cream);
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    line-height: 1.4;
+  }
+  .tl-sub {
+    font-size: 0.85rem;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  /* ══ LINKS / DOCS ════════════════════════════════════════════════════ */
+  #docs {
+    background: var(--navy);
+    border-top: 1px solid rgba(201,168,76,0.12);
+  }
+
+  .docs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 4rem;
+  }
+
+  .doc-card {
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .doc-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-4px);
+  }
+  .doc-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(201,168,76,0.08), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .doc-card:hover::before { opacity: 1; }
+
+  .doc-icon {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .doc-title {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--cream);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+  .doc-desc {
+    font-size: 0.8rem;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+  .doc-arrow {
+    position: absolute;
+    top: 2rem; right: 2rem;
+    font-size: 1.2rem;
+    color: var(--gold);
+    opacity: 0;
+    transform: translate(-5px, 5px);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  .doc-card:hover .doc-arrow { opacity: 1; transform: none; }
+
+  /* ══ VIDEO ═══════════════════════════════════════════════════════════ */
+  #videos {
+    background: var(--navy-mid);
+  }
+
+  .videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+  }
+
+  .video-card {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    group: true;
+  }
+
+  .video-thumb {
+    aspect-ratio: 16/9;
+    background: var(--navy-light);
+    border: 1px solid rgba(201,168,76,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    transition: border-color 0.3s;
+  }
+  .video-card:hover .video-thumb { border-color: var(--gold); }
+
+  .video-thumb::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(201,168,76,0.06), transparent);
+  }
+
+  .play-btn {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    font-size: 1.2rem;
+    position: relative;
+    transition: background 0.3s, transform 0.3s;
+  }
+  .video-card:hover .play-btn {
+    background: rgba(201,168,76,0.15);
+    transform: scale(1.1);
+  }
+
+  .video-label {
+    font-size: 0.85rem;
+    color: var(--cream);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  /* ══ CTA ═════════════════════════════════════════════════════════════ */
+  #cta {
+    background: var(--navy);
+    border-top: 1px solid rgba(201,168,76,0.12);
+    text-align: center;
+    padding: 10rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  #cta::before {
+    content: '';
+    position: absolute;
+    bottom: -200px; left: 50%;
+    transform: translateX(-50%);
+    width: 800px; height: 800px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.08), transparent 60%);
+    pointer-events: none;
+  }
+
+  .cta-num {
+    font-family: 'Unbounded', sans-serif;
+    font-size: clamp(5rem, 15vw, 12rem);
+    font-weight: 900;
+    color: rgba(201,168,76,0.07);
+    line-height: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: -0.05em;
+  }
+
+  #cta .section-heading { position: relative; }
+  #cta p {
+    font-size: 1rem;
+    color: var(--gray);
+    line-height: 1.8;
+    max-width: 500px;
+    margin: 1.5rem auto 3rem;
+    position: relative;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: var(--navy);
+    font-family: 'Unbounded', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.1em 2.5em;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+  .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 50px rgba(201,168,76,0.3);
+  }
+
+  /* ══ FOOTER ══════════════════════════════════════════════════════════ */
+  footer {
+    background: rgba(3, 7, 18, 0.98);
+    border-top: 1px solid rgba(201,168,76,0.15);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+  footer .logo-f {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.7rem;
+  }
+  footer p {
+    font-size: 0.8rem;
+    color: var(--gray);
+    letter-spacing: 0.05em;
+  }
+  footer a {
+    color: var(--gold);
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  footer a:hover { opacity: 0.7; }
+
+  /* ── Animations ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 1.2rem 1.5rem; }
+    nav.scrolled { padding: 0.8rem 1.5rem; }
+    .nav-links { display: none; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .about-stats { grid-template-columns: 1fr 1fr; }
+    section { padding: 5rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo">КІ<span>СТ</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">Про нас</a></li>
+    <li><a href="#timeline">Хронологія</a></li>
+    <li><a href="#docs">Документи</a></li>
+    <li><a href="#videos">Відео</a></li>
+    <li><a href="http://kist.ntu.edu.ua" target="_blank">Сайт кафедри</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<canvas id="hero-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
+<section class="hero" style="position:relative;z-index:1;">
+  <div class="hero-ring"></div>
+  <div class="hero-ring hero-ring-2"></div>
+  <div class="hero-ring hero-ring-3"></div>
+  <div class="hero-orb"></div>
+
+  <div class="hero-badge">Ювілей кафедри · 2005 — 2025</div>
+
+  <div class="hero-num">20</div>
+  <div class="hero-years">Років разом</div>
+
+  <p class="hero-title">
+    <strong>Кафедра інформаційних систем та технологій</strong><br>
+    Національний транспортний університет
+  </p>
+
+  <div class="hero-date">19 липня 2025 · НТУ · Київ</div>
+
+  <div class="hero-scroll">
+    <span>scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-tag">Наша історія</div>
+        <h2 class="section-heading reveal">Два десятиліття<br>інновацій та знань</h2>
+        <p class="reveal">19 липня 2005 року наказом ректора НТУ було засновано кафедру <strong>інформаційних систем та технологій</strong>. Від першого дня своєї діяльності кафедра стала центром підготовки висококваліфікованих IT-фахівців для транспортної галузі України.</p>
+        <p class="reveal">За 20 років ми виховали сотні інженерів-програмістів, провели десятки наукових досліджень і стали невід'ємною частиною академічного та технологічного середовища країни.</p>
+        <p class="reveal">Наша академічна спільнота — це <strong>викладачі-практики</strong>, дослідники та ентузіасти, що щодня формують майбутнє цифрових технологій.</p>
+      </div>
+      <div class="about-stats reveal">
+        <div class="stat-card">
+          <div class="stat-num">20</div>
+          <div class="stat-label">Років діяльності кафедри</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">2005</div>
+          <div class="stat-label">Рік заснування</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">КН</div>
+          <div class="stat-label">Спеціальність «Комп'ютерні науки»</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">PhD</div>
+          <div class="stat-label">Програми аспірантури та докторантури</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="container">
+    <div class="section-tag reveal">Хронологія</div>
+    <h2 class="section-heading reveal">Шлях крізь роки</h2>
+
+    <div class="timeline-track">
+      <div class="timeline-item">
+        <div class="tl-year">19 ЛИПНЯ 2005</div>
+        <div class="tl-text">Заснування кафедри</div>
+        <div class="tl-sub">Наказом ректора НТУ створено кафедру інформаційних систем та технологій — КІСТ. Початок нової ери IT-освіти в університеті.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-year">2005 — 2010</div>
+        <div class="tl-text">Становлення та перші кроки</div>
+        <div class="tl-sub">Формування навчальних програм, лабораторій та студентського наукового гуртка. Перші випускники кафедри.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-year">2010 — 2015</div>
+        <div class="tl-text">Розвиток та академічне зростання</div>
+        <div class="tl-sub">Розширення наукових напрямів, міжнародна співпраця, участь у конференціях та публікація наукових праць.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-year">2015</div>
+        <div class="tl-text">Святкування 10-річчя</div>
+        <div class="tl-sub">Ювілейний збірник «Кіст 10 років». Підбиття підсумків першого десятиліття, нагородження кращих випускників і викладачів.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-year">2015 — 2020</div>
+        <div class="tl-text">Цифрова трансформація</div>
+        <div class="tl-sub">Впровадження нових технологій у навчальний процес: хмарні обчислення, мобільні технології, CISCO-академія при НТУ.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-year">2020 — 2025</div>
+        <div class="tl-text">Робота в умовах викликів</div>
+        <div class="tl-sub">Дистанційне навчання, підтримка студентів та викладачів у складний час. Кафедра продовжує готувати фахівців попри всі виклики.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-year">19 ЛИПНЯ 2025</div>
+        <div class="tl-text">🎉 20 років — Ювілей КІСТ!</div>
+        <div class="tl-sub">Святкування двадцятиріччя кафедри. Подяки від ректорату, вітання від випускників та партнерів. Новий етап розвитку.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCS -->
+<section id="docs">
+  <div class="container">
+    <div class="section-tag reveal">Документи та матеріали</div>
+    <h2 class="section-heading reveal">Офіційні<br>матеріали ювілею</h2>
+
+    <div class="docs-grid">
+      <a href="http://kist.ntu.edu.ua/news/nakazy_rectora_ntu_19-07-2005.pdf" target="_blank" class="doc-card reveal">
+        <span class="doc-icon">📄</span>
+        <div class="doc-title">Наказ ректора НТУ</div>
+        <div class="doc-desc">Офіційний наказ про заснування кафедри від 19 липня 2005 року</div>
+        <span class="doc-arrow">↗</span>
+      </a>
+      <a href="http://kist.ntu.edu.ua/news/podyaka_11-06-2025.pdf" target="_blank" class="doc-card reveal">
+        <span class="doc-icon">🏅</span>
+        <div class="doc-title">Подяки та нагороди</div>
+        <div class="doc-desc">Офіційні подяки від ректорату кафедрі з нагоди ювілею (2025)</div>
+        <span class="doc-arrow">↗</span>
+      </a>
+      <a href="http://kist.ntu.edu.ua/news/addb_2025.pdf" target="_blank" class="doc-card reveal">
+        <span class="doc-icon">📚</span>
+        <div class="doc-title">Збірник «Діяльність» 2025</div>
+        <div class="doc-desc">Ювілейний збірник наукових та методичних праць кафедри</div>
+        <span class="doc-arrow">↗</span>
+      </a>
+      <a href="http://kist.ntu.edu.ua/news/kist15.pdf" target="_blank" class="doc-card reveal">
+        <span class="doc-icon">📖</span>
+        <div class="doc-title">Збірник «Кіст 10 років»</div>
+        <div class="doc-desc">Ювілейне видання до 10-річчя кафедри (2015 р.)</div>
+        <span class="doc-arrow">↗</span>
+      </a>
+      <a href="http://kist.ntu.edu.ua/news/kist20-03.php" target="_blank" class="doc-card reveal">
+        <span class="doc-icon">🎓</span>
+        <div class="doc-title">Привітання від кафедри</div>
+        <div class="doc-desc">Офіційне святкове привітання від колективу кафедри КІСТ</div>
+        <span class="doc-arrow">↗</span>
+      </a>
+      <a href="http://kist.ntu.edu.ua/vydguk_vypusk.php" target="_blank" class="doc-card reveal">
+        <span class="doc-icon">💬</span>
+        <div class="doc-title">Відгуки випускників</div>
+        <div class="doc-desc">Що кажуть наші випускники про роки, проведені на кафедрі</div>
+        <span class="doc-arrow">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section id="videos">
+  <div class="container">
+    <div class="section-tag reveal">Відеоматеріали</div>
+    <h2 class="section-heading reveal">Свято в об'єктиві</h2>
+
+    <div class="videos-grid">
+      <a href="https://youtu.be/T34Q51lXP-0" target="_blank" class="video-card reveal">
+        <div class="video-thumb">
+          <div class="play-btn">▶</div>
+        </div>
+        <div class="video-label">Відео з урочистостей до 20-річчя КІСТ</div>
+      </a>
+      <a href="https://youtu.be/lKx7pi4jIQg" target="_blank" class="video-card reveal">
+        <div class="video-thumb">
+          <div class="play-btn">▶</div>
+        </div>
+        <div class="video-label">Вітання від викладачів та колег кафедри</div>
+      </a>
+      <a href="https://youtu.be/9PB9OH3Ir5A" target="_blank" class="video-card reveal">
+        <div class="video-thumb">
+          <div class="play-btn">▶</div>
+        </div>
+        <div class="video-label">Вітання від випускників кафедри</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-num">КІСТ</div>
+  <div class="container" style="position:relative">
+    <div class="section-tag" style="justify-content:center">Разом у майбутнє</div>
+    <h2 class="section-heading reveal">Далі — більше</h2>
+    <p class="reveal">Двадцять років — це лише початок. КІСТ продовжує готувати найкращих фахівців, проводити передові дослідження та будувати цифрове майбутнє України.</p>
+    <a href="http://kist.ntu.edu.ua" target="_blank" class="btn-primary reveal">
+      Перейти на сайт кафедри ↗
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo-f">КІСТ · 20</div>
+  <p>Кафедра інформаційних систем та технологій · <a href="http://kist.ntu.edu.ua" target="_blank">kist.ntu.edu.ua</a></p>
+  <p style="margin-top:0.5rem;">Національний транспортний університет · Київ · 2005 — 2025</p>
+</footer>
+
+<script>
+  // ── CANVAS PARTICLE SYSTEM ──────────────────────────────────────────
+  const canvas = document.getElementById('hero-canvas');
+  const ctx = canvas.getContext('2d');
+
+  let W, H, mouse = { x: 0, y: 0 }, dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+  function resize() {
+    W = canvas.width  = window.innerWidth  * dpr;
+    H = canvas.height = window.innerHeight * dpr;
+    ctx.scale(dpr, dpr);
+  }
+  resize();
+  window.addEventListener('resize', () => { resize(); initParticles(); });
+
+  // Track mouse for parallax
+  window.addEventListener('mousemove', e => {
+    mouse.x = (e.clientX / window.innerWidth  - 0.5);
+    mouse.y = (e.clientY / window.innerHeight - 0.5);
+  });
+
+  // Parallax layers in hero — only move orb, rings keep CSS spin
+  const heroOrb  = document.querySelector('.hero-orb');
+  const heroNum  = document.querySelector('.hero-num');
+  const heroBadge = document.querySelector('.hero-badge');
+  function applyParallax() {
+    if (heroOrb)   heroOrb.style.transform   = `translate(${mouse.x*18}px,${mouse.y*18}px) scale(1)`;
+    if (heroNum)   heroNum.style.transform   = `translate(${mouse.x*6}px,${mouse.y*6}px)`;
+    if (heroBadge) heroBadge.style.transform = `translate(${mouse.x*10}px,${mouse.y*10}px)`;
+  }
+
+  // ── PARTICLES ──
+  const GOLD   = [201, 168,  76];
+  const SILVER = [160, 170, 187];
+  const WHITE  = [245, 238, 216];
+
+  class Particle {
+    constructor() { this.reset(true); }
+    reset(init = false) {
+      this.x  = Math.random() * window.innerWidth;
+      this.y  = init ? Math.random() * window.innerHeight : window.innerHeight + 10;
+      this.vx = (Math.random() - 0.5) * 0.3;
+      this.vy = -(Math.random() * 0.4 + 0.1);
+      this.size = Math.random() * 1.8 + 0.4;
+      this.life = 0;
+      this.maxLife = Math.random() * 300 + 200;
+      const palette = [GOLD, SILVER, WHITE];
+      this.color = palette[Math.floor(Math.random() * palette.length)];
+      // some particles are "meteors" (long streaks)
+      this.meteor = Math.random() < 0.06;
+      if (this.meteor) {
+        this.size = Math.random() * 1.2 + 0.6;
+        this.vx = (Math.random() - 0.5) * 2;
+        this.vy = -(Math.random() * 1.5 + 0.8);
+        this.tail = [];
+      }
+      // some are "glints" (brief bright flashes)
+      this.glint = !this.meteor && Math.random() < 0.1;
+      this.glintPhase = Math.random() * Math.PI * 2;
+    }
+    update() {
+      // gentle drift toward mouse (very subtle)
+      this.vx += mouse.x * 0.002;
+      this.vy += mouse.y * 0.002;
+      // dampen
+      this.vx *= 0.995;
+      this.vy *= 0.998;
+
+      if (this.meteor) {
+        this.tail.push({ x: this.x, y: this.y });
+        if (this.tail.length > 18) this.tail.shift();
+      }
+
+      this.x += this.vx;
+      this.y += this.vy;
+      this.life++;
+      if (this.life > this.maxLife || this.y < -20 || this.x < -50 || this.x > window.innerWidth + 50) {
+        this.reset();
+      }
+    }
+    draw() {
+      const prog = this.life / this.maxLife;
+      let alpha = prog < 0.1 ? prog * 10 : prog > 0.8 ? (1 - prog) * 5 : 1;
+      alpha = Math.min(alpha, 0.9);
+
+      const [r, g, b] = this.color;
+
+      if (this.glint) {
+        // twinkle
+        const tw = 0.5 + 0.5 * Math.sin(this.glintPhase + this.life * 0.08);
+        alpha *= tw;
+        const sz = this.size * (1 + tw * 1.5);
+        // cross shape
+        ctx.save();
+        ctx.globalAlpha = alpha * 0.8;
+        ctx.strokeStyle = `rgb(${r},${g},${b})`;
+        ctx.lineWidth = 0.7;
+        ctx.beginPath();
+        ctx.moveTo(this.x - sz * 2.5, this.y);
+        ctx.lineTo(this.x + sz * 2.5, this.y);
+        ctx.moveTo(this.x, this.y - sz * 2.5);
+        ctx.lineTo(this.x, this.y + sz * 2.5);
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      if (this.meteor && this.tail.length > 2) {
+        // draw tail
+        for (let i = 0; i < this.tail.length - 1; i++) {
+          const t = i / this.tail.length;
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(${r},${g},${b},${t * alpha * 0.5})`;
+          ctx.lineWidth = this.size * t * 0.8;
+          ctx.moveTo(this.tail[i].x, this.tail[i].y);
+          ctx.lineTo(this.tail[i+1].x, this.tail[i+1].y);
+          ctx.stroke();
+        }
+      }
+
+      // main dot
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${r},${g},${b},${alpha * 0.75})`;
+      ctx.fill();
+
+      // soft glow for gold ones
+      if (this.color === GOLD && alpha > 0.3) {
+        const grd = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size * 5);
+        grd.addColorStop(0, `rgba(${r},${g},${b},${alpha * 0.15})`);
+        grd.addColorStop(1, 'transparent');
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size * 5, 0, Math.PI * 2);
+        ctx.fillStyle = grd;
+        ctx.fill();
+      }
+    }
+  }
+
+  // ── CONSTELLATION LINES ──
+  // occasional thin lines connecting nearby particles
+  function drawConnections(particles) {
+    const maxDist = 110;
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const d = Math.sqrt(dx*dx + dy*dy);
+        if (d < maxDist) {
+          const alpha = (1 - d / maxDist) * 0.08;
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(201,168,76,${alpha})`;
+          ctx.lineWidth = 0.4;
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  let particles = [];
+  function initParticles() {
+    particles = Array.from({ length: 90 }, () => new Particle());
+  }
+  initParticles();
+
+  // ── ANIMATION LOOP ──
+  function animate() {
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+    // very subtle background vignette
+    const vig = ctx.createRadialGradient(
+      window.innerWidth/2, window.innerHeight/2, window.innerHeight * 0.2,
+      window.innerWidth/2, window.innerHeight/2, window.innerHeight * 0.9
+    );
+    vig.addColorStop(0, 'transparent');
+    vig.addColorStop(1, 'rgba(6,13,31,0.4)');
+    ctx.fillStyle = vig;
+    ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+
+    // gold particles only for connections (first 60)
+    const goldOnes = particles.filter(p => p.color === GOLD).slice(0, 30);
+    drawConnections(goldOnes);
+
+    particles.forEach(p => { p.update(); p.draw(); });
+
+    applyParallax();
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  // ── SCROLL PROGRESS ──
+  const bar = document.getElementById('progress-bar');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    const pct = (window.scrollY / (h.scrollHeight - h.clientHeight)) * 100;
+    bar.style.width = pct + '%';
+  });
+
+  // Sticky nav
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal, .timeline-item');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), 
+          e.target.classList.contains('timeline-item') ? i * 100 : 0);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => obs.observe(el));
+
+  // Stagger grid children
+  document.querySelectorAll('.docs-grid, .videos-grid, .about-stats').forEach(grid => {
+    [...grid.children].forEach((child, i) => {
+      child.style.transitionDelay = (i * 0.08) + 's';
+    });
+  });
+</script>
+</body>
+</html>
